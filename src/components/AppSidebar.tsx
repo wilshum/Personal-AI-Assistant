@@ -11,6 +11,15 @@ const icons: Record<string, ReactNode> = {
       <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M4 9h16v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9Z" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   ),
+  "/cooking": (
+    <svg className="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
+      <path
+        d="M7 3v4M11 3v4M15 3v4M6 7h10v4a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V7Zm10 2h1a2 2 0 0 1 2 2v2a4 4 0 0 1-4 4h-2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
   "/money": (
     <svg className="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
       <path d="M12 3v18M17 7H9.5a2.5 2.5 0 0 0 0 5h5a2.5 2.5 0 0 1 0 5H6" strokeLinecap="round" strokeLinejoin="round" />
@@ -37,9 +46,9 @@ export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex w-64 shrink-0 flex-col border-r border-zinc-200/80 bg-zinc-50/90 backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-950/80">
-      <div className="flex h-14 items-center border-b border-zinc-200/80 px-4 dark:border-zinc-800">
-        <Link href="/" className="font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+    <aside className="flex w-64 shrink-0 flex-col border-r border-zinc-200/80 bg-white/90 backdrop-blur-sm">
+      <div className="flex h-14 items-center border-b border-zinc-200/80 px-4">
+        <Link href="/" className="font-semibold tracking-tight text-zinc-900">
           Assistant
         </Link>
       </div>
@@ -53,8 +62,8 @@ export function AppSidebar() {
               className={[
                 "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors",
                 active
-                  ? "bg-white text-zinc-900 shadow-sm ring-1 ring-zinc-200/80 dark:bg-zinc-900 dark:text-zinc-50 dark:ring-zinc-700"
-                  : "text-zinc-600 hover:bg-white/70 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900/60 dark:hover:text-zinc-100",
+                  ? "bg-blue-50 text-zinc-900 shadow-sm ring-1 ring-blue-200"
+                  : "text-zinc-600 hover:bg-white/70 hover:text-zinc-900",
               ].join(" ")}
             >
               {icons[item.href]}
@@ -63,7 +72,7 @@ export function AppSidebar() {
           );
         })}
       </nav>
-      <p className="border-t border-zinc-200/80 px-4 py-3 text-xs leading-relaxed text-zinc-500 dark:border-zinc-800 dark:text-zinc-500">
+      <p className="border-t border-zinc-200/80 px-4 py-3 text-xs leading-relaxed text-zinc-500">
         Pick an area to focus. Add notes and tasks here over time.
       </p>
     </aside>

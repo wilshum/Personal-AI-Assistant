@@ -11,6 +11,11 @@ export const NAV_ITEMS: NavItem[] = [
     description: "Career goals, meetings, and deliverables",
   },
   {
+    href: "/cooking",
+    label: "Cooking",
+    description: "Meals, recipes, groceries, and meal prep",
+  },
+  {
     href: "/money",
     label: "Money",
     description: "Budgets, bills, and cash flow",
