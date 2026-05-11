@@ -1,9 +1,9 @@
-import Anthropic from "@anthropic-ai/sdk";
 import { NextResponse } from "next/server";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export const runtime = "nodejs";
 
-const DEFAULT_MODEL = "claude-sonnet-4-20250514";
+const DEFAULT_MODEL = "gemini-1.5-flash-latest";
 const MAX_MESSAGES = 48;
 
 type ClientMessage = { role: "user" | "assistant"; content: string };
@@ -14,10 +14,10 @@ function trimMessages(messages: ClientMessage[]): ClientMessage[] {
 }
 
 export async function POST(req: Request) {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GOOGLE_AI_STUDIO_API_KEY;
   if (!apiKey?.trim()) {
     return NextResponse.json(
-      { error: "Missing ANTHROPIC_API_KEY. Add it to .env.local and restart the dev server." },
+      { error: "Missing GOOGLE_AI_STUDIO_API_KEY. Add it to .env.local and restart the dev server." },
       { status: 500 },
     );
   }
@@ -54,23 +54,27 @@ export async function POST(req: Request) {
 
   const trimmed = trimMessages(messages);
 
-  const anthropic = new Anthropic({ apiKey });
-  const model = process.env.ANTHROPIC_MODEL?.trim() || DEFAULT_MODEL;
+  const model = process.env.GOOGLE_AI_STUDIO_MODEL?.trim() || DEFAULT_MODEL;
 
   try {
-    const response = await anthropic.messages.create({
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const gemini = genAI.getGenerativeModel({
       model,
-      max_tokens: 4096,
-      system:
+      systemInstruction:
         "You are a helpful personal assistant inside a private app. Be concise, warm, and practical. If the user refers to earlier messages, use that context.",
-      messages: trimmed.map((m) => ({
-        role: m.role,
-        content: m.content,
-      })),
     });
 
-    const block = response.content[0];
-    const text = block?.type === "text" ? block.text : "";
+    const result = await gemini.generateContent({
+      contents: trimmed.map((m) => ({
+        role: m.role === "assistant" ? "model" : "user",
+        parts: [{ text: m.content }],
+      })),
+      generationConfig: {
+        maxOutputTokens: 1024,
+      },
+    });
+
+    const text = result.response.text();
     if (!text) {
       return NextResponse.json({ error: "Empty model response" }, { status: 502 });
     }
