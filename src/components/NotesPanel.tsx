@@ -232,7 +232,18 @@ export function NotesPanel() {
                   className="shrink-0 rounded-lg border border-red-200 bg-white px-2 py-1 text-[11px] font-medium text-red-700 transition-colors hover:bg-red-50 disabled:opacity-50"
                   title="Delete this note"
                 >
-                  {deletingId === n.id ? "Deleting…" : "Delete"}
+                  {deletingId === n.id ? (
+                    "Deleting…"
+                  ) : (
+                    <>
+                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
+                        <path d="M3 6h18" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M8 6v12a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V6" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M10 6V4a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span className="sr-only">Delete</span>
+                    </>
+                  )}
                 </button>
               </div>
             </li>

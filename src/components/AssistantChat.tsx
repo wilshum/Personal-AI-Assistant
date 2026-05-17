@@ -35,6 +35,7 @@ export function AssistantChat() {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const messagesRef = useRef<HTMLDivElement>(null);
+  const prevMessagesLenRef = useRef<number>(0);
 
   useEffect(() => {
     setMessages(loadStored());
@@ -51,10 +52,19 @@ export function AssistantChat() {
   }, [messages, hydrated]);
 
   useEffect(() => {
-    if (messagesRef.current) {
-      messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+    const prevLen = prevMessagesLenRef.current;
+    const curLen = messages.length;
+    const last = messages[curLen - 1];
+
+    // Only auto-scroll when a new assistant reply was appended.
+    if (curLen > prevLen && last && last.role === "assistant") {
+      if (messagesRef.current) {
+        messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+      }
     }
-  }, [messages, pending]);
+
+    prevMessagesLenRef.current = curLen;
+  }, [messages]);
 
   const send = useCallback(async () => {
     const text = input.trim();
