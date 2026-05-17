@@ -62,3 +62,11 @@ export async function deleteFromChroma(id: string) {
     ids: [id],
   });
 }
+
+export async function deleteMultipleFromChroma(ids: string[]) {
+  if (ids.length === 0) return;
+  const col = await getCollection();
+  await col.delete({
+    ids,
+  });
+}

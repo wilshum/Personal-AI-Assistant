@@ -1,3 +1,4 @@
+import { AreaHero } from "@/components/AreaHero";
 import { SectionShell } from "@/components/SectionShell";
 
 export default function MoneyPage() {
@@ -6,7 +7,18 @@ export default function MoneyPage() {
       title="Money management"
       subtitle="Separate spending rhythm from investing noise. Use this view for budgets, subscriptions, and savings targets."
     >
-      <div className="space-y-6">
+      <div className="space-y-8">
+        <AreaHero
+          image="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1200&q=80"
+          title="Finance inspiration"
+          description="A clean money hero image with budgeting and investing logos to make the page feel more approachable."
+          logos={[
+            { href: "https://www.ynab.com/", src: "https://logo.clearbit.com/ynab.com", title: "YNAB" },
+            { href: "https://www.mint.com/", src: "https://logo.clearbit.com/mint.com", title: "Mint" },
+            { href: "https://www.vanguard.com/", src: "https://logo.clearbit.com/vanguard.com", title: "Vanguard" },
+          ]}
+        />
+        <div className="space-y-6">
         <div className="space-y-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 p-6">
           <div>
             <h2 className="text-lg font-semibold text-zinc-900">Use this tab</h2>
@@ -155,6 +167,7 @@ export default function MoneyPage() {
             </a>
           </div>
         </div>
+      </div>
       </div>
     </SectionShell>
   );

@@ -1,3 +1,4 @@
+import { AreaHero } from "@/components/AreaHero";
 import { SectionShell } from "@/components/SectionShell";
 
 export default function DatingPage() {
@@ -6,7 +7,18 @@ export default function DatingPage() {
       title="Dating"
       subtitle="Clarify what you want, reflect after dates, and keep boundaries visible—without mixing this headspace into work or money tabs."
     >
-      <div className="space-y-6">
+      <div className="space-y-8">
+        <AreaHero
+          image="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80"
+          title="Dating inspiration"
+          description="A warm visual cue to keep relationship notes feeling thoughtful, with platform logos for easy reference."
+          logos={[
+            { href: "https://hinge.co", src: "https://logo.clearbit.com/hinge.co", title: "Hinge" },
+            { href: "https://bumble.com", src: "https://logo.clearbit.com/bumble.com", title: "Bumble" },
+            { href: "https://psychologytoday.com", src: "https://logo.clearbit.com/psychologytoday.com", title: "Psychology Today" },
+          ]}
+        />
+        <div className="space-y-6">
         <div className="space-y-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 p-6">
           <div>
             <h2 className="text-lg font-semibold text-zinc-900">Use this tab</h2>
@@ -136,6 +148,7 @@ export default function DatingPage() {
             </a>
           </div>
         </div>      </div>
+      </div>
     </SectionShell>
   );
 }

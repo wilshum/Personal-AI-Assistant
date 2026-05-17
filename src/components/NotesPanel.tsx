@@ -53,6 +53,7 @@ export function NotesPanel() {
       if (!note) throw new Error("Bad response");
 
       setNotes((prev) => [note, ...prev]);
+      window.dispatchEvent(new CustomEvent("notes:updated"));
       setText("");
 
       const idxRes = await fetch("/api/memory/index", {
@@ -94,6 +95,7 @@ export function NotesPanel() {
         throw new Error(`Failed to delete note (${res.status})`);
       }
       setNotes((prev) => prev.filter((n) => n.id !== id));
+      window.dispatchEvent(new CustomEvent("notes:updated"));
       setIndexHint("Note deleted successfully.");
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to delete note");
@@ -113,6 +115,7 @@ export function NotesPanel() {
         throw new Error(`Failed to clear notes (${res.status})`);
       }
       setNotes([]);
+      window.dispatchEvent(new CustomEvent("notes:updated"));
       setIndexHint("All notes cleared successfully.");
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to clear notes");

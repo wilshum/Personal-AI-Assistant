@@ -25,6 +25,12 @@ const icons: Record<string, ReactNode> = {
       <path d="M12 3v18M17 7H9.5a2.5 2.5 0 0 0 0 5h5a2.5 2.5 0 0 1 0 5H6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   ),
+  "/health": (
+    <svg className="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
+      <path d="M12 7.5v9M7.5 12h9" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M19 12a7 7 0 1 0-14 0 7 7 0 0 0 14 0Z" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
   "/stocks": (
     <svg className="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
       <path d="M4 19V5M4 19h16M8 17V9m4 8V7m4 10v-4" strokeLinecap="round" strokeLinejoin="round" />
@@ -46,10 +52,10 @@ export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex w-64 shrink-0 flex-col border-r border-zinc-200/80 bg-white/90 backdrop-blur-sm">
+    <aside className="flex w-72 shrink-0 flex-col border-r border-zinc-200/80 bg-white/90 backdrop-blur-sm">
       <div className="flex h-14 items-center border-b border-zinc-200/80 px-4">
-        <Link href="/" className="font-semibold tracking-tight text-zinc-900">
-          Assistant
+        <Link href="/" className="font-semibold tracking-tight text-zinc-900 whitespace-nowrap">
+          Personal AI Knowledge Assistant
         </Link>
       </div>
       <nav className="flex flex-1 flex-col gap-0.5 p-3" aria-label="Life areas">

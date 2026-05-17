@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
-import { deleteFromChroma } from "@/lib/chroma";
+import { deleteFromChroma, deleteMultipleFromChroma } from "@/lib/chroma";
 
 export const runtime = "nodejs";
 
@@ -77,7 +77,14 @@ export async function DELETE(req: Request) {
     body = await req.json();
   } catch {
     // If no body, delete all notes (legacy behavior)
+    const notes = await readNotes();
     await writeNotes([]);
+    // Also delete all from Chroma in batch
+    try {
+      await deleteMultipleFromChroma(notes.map((n) => n.id));
+    } catch (e) {
+      console.error("Failed to delete all notes from Chroma:", e);
+    }
     return NextResponse.json({ success: true });
   }
 
@@ -85,7 +92,14 @@ export async function DELETE(req: Request) {
   
   // If no ID provided, delete all notes
   if (!id) {
+    const notes = await readNotes();
     await writeNotes([]);
+    // Also delete all from Chroma in batch
+    try {
+      await deleteMultipleFromChroma(notes.map((n) => n.id));
+    } catch (e) {
+      console.error("Failed to delete all notes from Chroma:", e);
+    }
     return NextResponse.json({ success: true });
   }
 

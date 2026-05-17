@@ -1,3 +1,4 @@
+import { AreaHero } from "@/components/AreaHero";
 import { SectionShell } from "@/components/SectionShell";
 
 export default function SocialPage() {
@@ -6,7 +7,18 @@ export default function SocialPage() {
       title="Social life"
       subtitle="Friendships need lightweight systems too: who you want to see, ideas for hangs, and follow-ups so nobody slips through the cracks."
     >
-      <div className="space-y-6">
+      <div className="space-y-8">
+        <AreaHero
+          image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80"
+          title="Social inspiration"
+          description="A vibrant people-first hero image and popular social planning logos to warm up the space."
+          logos={[
+            { href: "https://www.eventbrite.com/", src: "https://logo.clearbit.com/eventbrite.com", title: "Eventbrite" },
+            { href: "https://www.meetup.com/", src: "https://logo.clearbit.com/meetup.com", title: "Meetup" },
+            { href: "https://www.yelp.com/", src: "https://logo.clearbit.com/yelp.com", title: "Yelp" },
+          ]}
+        />
+        <div className="space-y-6">
         <div className="space-y-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 p-6">
           <div>
             <h2 className="text-lg font-semibold text-zinc-900">Use this tab</h2>
@@ -142,6 +154,7 @@ export default function SocialPage() {
             </a>
           </div>
         </div>
+      </div>
       </div>
     </SectionShell>
   );

@@ -1,3 +1,4 @@
+import { AreaHero } from "@/components/AreaHero";
 import { SectionShell } from "@/components/SectionShell";
 
 export default function CookingPage() {
@@ -6,7 +7,18 @@ export default function CookingPage() {
       title="Cooking"
       subtitle="Plan meals, save recipes, and keep a simple grocery flow so cooking feels automatic instead of stressful."
     >
-      <div className="space-y-6">
+      <div className="space-y-8">
+        <AreaHero
+          image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80"
+          title="Cooking inspiration"
+          description="A food-forward hero image that brings the kitchen to life, paired with recipe platform logos for easy reference."
+          logos={[
+            { href: "https://www.allrecipes.com/", src: "https://logo.clearbit.com/allrecipes.com", title: "AllRecipes" },
+            { href: "https://www.bonappetit.com/", src: "https://logo.clearbit.com/bonappetit.com", title: "Bon Appétit" },
+            { href: "https://www.budgetbytes.com/", src: "https://logo.clearbit.com/budgetbytes.com", title: "Budget Bytes" },
+          ]}
+        />
+        <div className="space-y-6">
         <div className="space-y-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 p-6">
           <div>
             <h2 className="text-lg font-semibold text-zinc-900">Use this tab</h2>
@@ -142,6 +154,7 @@ export default function CookingPage() {
             </a>
           </div>
         </div>
+      </div>
       </div>
     </SectionShell>
   );

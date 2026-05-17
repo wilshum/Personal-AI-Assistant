@@ -21,6 +21,11 @@ export const NAV_ITEMS: NavItem[] = [
     description: "Budgets, bills, and cash flow",
   },
   {
+    href: "/health",
+    label: "Health",
+    description: "Wellness, habits, and recovery notes",
+  },
+  {
     href: "/stocks",
     label: "Stocks",
     description: "Watchlists, positions, and research",

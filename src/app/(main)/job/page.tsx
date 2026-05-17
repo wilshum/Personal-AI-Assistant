@@ -1,3 +1,4 @@
+import { AreaHero } from "@/components/AreaHero";
 import { SectionShell } from "@/components/SectionShell";
 
 export default function JobPage() {
@@ -6,7 +7,18 @@ export default function JobPage() {
       title="Job"
       subtitle="Keep one thread for career: priorities for the week, stakeholder updates, and skills you are building."
     >
-      <div className="space-y-6">
+      <div className="space-y-8">
+        <AreaHero
+          image="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80"
+          title="Career inspiration"
+          description="A polished career hero image plus professional learning logos to reinforce your job-focused workflow."
+          logos={[
+            { href: "https://www.coursera.org/", src: "https://logo.clearbit.com/coursera.org", title: "Coursera" },
+            { href: "https://www.linkedin.com/learning/", src: "https://logo.clearbit.com/linkedin.com", title: "LinkedIn" },
+            { href: "https://www.udemy.com/", src: "https://logo.clearbit.com/udemy.com", title: "Udemy" },
+          ]}
+        />
+        <div className="space-y-6">
         <div className="space-y-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 p-6">
           <div>
             <h2 className="text-lg font-semibold text-zinc-900">Use this tab</h2>
@@ -142,6 +154,7 @@ export default function JobPage() {
             </a>
           </div>
         </div>
+      </div>
       </div>
     </SectionShell>
   );
