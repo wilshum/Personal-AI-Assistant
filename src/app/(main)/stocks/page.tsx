@@ -7,6 +7,14 @@ export default function StocksPage() {
       subtitle="Track what you own, what you are watching, and why—so decisions stay intentional instead of reactive."
     >
       <div className="space-y-6">
+        <div className="space-y-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 p-6">
+          <div>
+            <h2 className="text-lg font-semibold text-zinc-900">Use this tab</h2>
+            <p className="mt-1 text-sm text-zinc-600">Keep watchlists, thesis notes, and research ideas together.</p>
+          </div>
+          <p className="text-sm text-zinc-600">Use this space to capture both your short-term trades and long-term investment thinking.</p>
+        </div>
+
         {/* Short-term Investing */}
         <div className="space-y-4 rounded-xl border border-dashed border-blue-200 bg-blue-50/50 p-6">
           <div>
@@ -160,8 +168,6 @@ export default function StocksPage() {
               </div>
             </a>
           </div>
-        </div>
-      </div>
         </div>
       </div>
     </SectionShell>

@@ -7,6 +7,14 @@ export default function JobPage() {
       subtitle="Keep one thread for career: priorities for the week, stakeholder updates, and skills you are building."
     >
       <div className="space-y-6">
+        <div className="space-y-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 p-6">
+          <div>
+            <h2 className="text-lg font-semibold text-zinc-900">Use this tab</h2>
+            <p className="mt-1 text-sm text-zinc-600">Keep your job-related plans, goals, and updates in one place.</p>
+          </div>
+          <p className="text-sm text-zinc-600">Save interview notes, career goals, and quick follow-ups so your next step stays clear.</p>
+        </div>
+
         {/* Career Development */}
         <div className="space-y-4 rounded-xl border border-dashed border-indigo-200 bg-indigo-50/50 p-6">
           <div>

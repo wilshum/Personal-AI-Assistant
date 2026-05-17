@@ -14,7 +14,6 @@ export function NotesPanel() {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [indexHint, setIndexHint] = useState<string | null>(null);
-  const [reindexPending, setReindexPending] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const sorted = useMemo(() => notes, [notes]);
@@ -81,43 +80,6 @@ export function NotesPanel() {
     }
   }
 
-  async function reindexAll() {
-    setReindexPending(true);
-    setError(null);
-    setIndexHint(null);
-    try {
-      const res = await fetch("/api/memory/reindex", { method: "POST" });
-      const data: unknown = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        const msg =
-          typeof data === "object" && data && "error" in data && typeof (data as { error: unknown }).error === "string"
-            ? (data as { error: string }).error
-            : `Reindex failed (${res.status})`;
-        throw new Error(msg);
-      }
-      const indexed =
-        typeof data === "object" && data && "indexed" in data && typeof (data as { indexed: unknown }).indexed === "number"
-          ? (data as { indexed: number }).indexed
-          : 0;
-      const total =
-        typeof data === "object" && data && "total" in data && typeof (data as { total: unknown }).total === "number"
-          ? (data as { total: number }).total
-          : 0;
-      const errors =
-        typeof data === "object" && data && "errors" in data && Array.isArray((data as { errors: unknown }).errors)
-          ? (data as { errors: string[] }).errors
-          : [];
-      if (errors.length) {
-        throw new Error(errors.slice(0, 2).join(" · "));
-      }
-      setIndexHint(`Reindexed ${indexed} / ${total} notes into Chroma.`);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Reindex failed");
-    } finally {
-      setReindexPending(false);
-    }
-  }
-
   async function deleteNote(id: string) {
     setError(null);
     setIndexHint(null);
@@ -167,14 +129,6 @@ export function NotesPanel() {
           </p>
         </div>
         <div className="flex gap-2">
-          <button
-            type="button"
-            onClick={() => void reindexAll()}
-            disabled={reindexPending}
-            className="shrink-0 rounded-lg border border-zinc-200 bg-white px-2.5 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-50 disabled:opacity-50"
-          >
-            {reindexPending ? "Reindexing…" : "Re-index all notes"}
-          </button>
           <button
             type="button"
             onClick={() => void clearAllNotes()}

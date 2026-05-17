@@ -7,6 +7,14 @@ export default function MoneyPage() {
       subtitle="Separate spending rhythm from investing noise. Use this view for budgets, subscriptions, and savings targets."
     >
       <div className="space-y-6">
+        <div className="space-y-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 p-6">
+          <div>
+            <h2 className="text-lg font-semibold text-zinc-900">Use this tab</h2>
+            <p className="mt-1 text-sm text-zinc-600">Track your money goals and everyday spending in one place.</p>
+          </div>
+          <p className="text-sm text-zinc-600">Capture budgets, subscriptions, and saving targets so decisions feel calm instead of reactive.</p>
+        </div>
+
         {/* Budgeting & Tracking */}
         <div className="space-y-4 rounded-xl border border-dashed border-emerald-200 bg-emerald-50/50 p-6">
           <div>

@@ -7,6 +7,14 @@ export default function DatingPage() {
       subtitle="Clarify what you want, reflect after dates, and keep boundaries visible—without mixing this headspace into work or money tabs."
     >
       <div className="space-y-6">
+        <div className="space-y-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 p-6">
+          <div>
+            <h2 className="text-lg font-semibold text-zinc-900">Use this tab</h2>
+            <p className="mt-1 text-sm text-zinc-600">Keep dating intentions, reflections, and boundaries together.</p>
+          </div>
+          <p className="text-sm text-zinc-600">Use the notes panel here for date recaps, dealbreakers, and what felt good or off.</p>
+        </div>
+
         {/* Dating Platforms */}
         <div className="space-y-4 rounded-xl border border-dashed border-pink-200 bg-pink-50/50 p-6">
           <div>

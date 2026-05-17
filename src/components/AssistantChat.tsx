@@ -56,11 +56,11 @@ export function AssistantChat() {
     const curLen = messages.length;
     const last = messages[curLen - 1];
 
-    // Only auto-scroll when a new assistant reply was appended.
-    if (curLen > prevLen && last && last.role === "assistant") {
-      if (messagesRef.current) {
-        messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
-      }
+    // Only auto-scroll the chat container when an assistant reply is appended.
+    if (curLen > prevLen && last && last.role === "assistant" && messagesRef.current) {
+      requestAnimationFrame(() => {
+        messagesRef.current?.scrollTo({ top: messagesRef.current.scrollHeight, behavior: "smooth" });
+      });
     }
 
     prevMessagesLenRef.current = curLen;

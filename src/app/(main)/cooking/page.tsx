@@ -7,6 +7,14 @@ export default function CookingPage() {
       subtitle="Plan meals, save recipes, and keep a simple grocery flow so cooking feels automatic instead of stressful."
     >
       <div className="space-y-6">
+        <div className="space-y-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 p-6">
+          <div>
+            <h2 className="text-lg font-semibold text-zinc-900">Use this tab</h2>
+            <p className="mt-1 text-sm text-zinc-600">Keep meal plans, recipes, and grocery notes in one place.</p>
+          </div>
+          <p className="text-sm text-zinc-600">Track your favorite dishes, weekly menus, and shopping lists so cooking stays simple and repeatable.</p>
+        </div>
+
         {/* Recipe Resources */}
         <div className="space-y-4 rounded-xl border border-dashed border-orange-200 bg-orange-50/50 p-6">
           <div>

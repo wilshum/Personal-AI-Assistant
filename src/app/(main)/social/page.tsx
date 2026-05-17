@@ -7,6 +7,14 @@ export default function SocialPage() {
       subtitle="Friendships need lightweight systems too: who you want to see, ideas for hangs, and follow-ups so nobody slips through the cracks."
     >
       <div className="space-y-6">
+        <div className="space-y-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 p-6">
+          <div>
+            <h2 className="text-lg font-semibold text-zinc-900">Use this tab</h2>
+            <p className="mt-1 text-sm text-zinc-600">Plan social time, follow-ups, and group ideas in one place.</p>
+          </div>
+          <p className="text-sm text-zinc-600">Capture events, people to check in with, and creative hangout ideas so friendships stay active.</p>
+        </div>
+
         {/* Event Planning */}
         <div className="space-y-4 rounded-xl border border-dashed border-rose-200 bg-rose-50/50 p-6">
           <div>
